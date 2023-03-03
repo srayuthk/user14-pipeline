@@ -10,14 +10,14 @@ env:
   REPOSITORY: "<username>/<username>-tutorial-backend"
   GITREF: ${{ github.event.inputs.ref }}
   ARTIFACT_NAME: "artifact-tutorial-backend"
-  APP_RESOURCE_NAME: app-user14-az-usw3-dev-001
+  APP_RESOURCE_NAME: app-user14-az-usw3-uat-001
 jobs:
   deploy-app-service:
     name: Deploy
     runs-on: [ self-hosted, tutorial-be-dev, vm-user14SelfHost-az-usw3-sbx-001 ]
     environment:
       name: sit
-      url: app-user14-az-usw3-dev-001.azurewebsites.net/swagger/index.html
+      url: app-user14-az-usw3-uat-001.azurewebsites.net/swagger/index.html
     steps:
     - name: Download Artifact
       uses: robinraju/release-downloader@v1.7
@@ -53,5 +53,5 @@ jobs:
       with:
         token: ${{ secrets.WORKFLOW_TOKEN }}
         repository: ${{ env.REPOSITORY }}
-        event-type: <username>-tutorial-be-dast-sit
+        event-type: srayuthk-tutorial-be-dast-sit
         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
