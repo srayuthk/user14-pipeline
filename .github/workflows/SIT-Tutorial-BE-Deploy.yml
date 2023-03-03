@@ -14,7 +14,11 @@ env:
 jobs:
   deploy-app-service:
     name: Deploy
-    runs-on: [ self-hosted, tutorial-be-dev, vm-user14SelfHost-az-usw3-sbx-001 ]
+    runs-on:   set-configuration:
+    name: set appservice configuration
+    runs-on: [ self-hosted, tutorial-be-dev, vm-<username>SelfHost-az-<region>-sbx-001 ]
+    environment: sit
+
     environment:
       name: sit
       url: app-user14-az-usw3-uat-001.azurewebsites.net/swagger/index.html
